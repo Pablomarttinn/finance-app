@@ -233,8 +233,7 @@ function renderNote(){
     </div>
     <div class="bar"><i style="width:${Math.min(100,pct(t.plan,t.meta))}%"></i></div>
     ${t.ext?`<div class="mut" style="margin-top:6px">Con ahorro extra: ${eur(t.today)}</div>`:''}
-    <div class="sit tap" onclick="openSit()"><div class="row"><span class="sub">Situación actual ›</span><span class="sp"></span><b class="amt" style="font-size:18px">${eur(t.today+fin-debt)}</b></div>
-      ${Math.abs(fin)>0.005||debt?`<div class="mut" style="margin-top:2px">${[Math.abs(fin)>0.005?`${fin>0?'+':'−'} ${eur(Math.abs(fin))} de financiaciones (recibido − gastado)`:'',debt?`− ${eur(debt)} de deuda pendiente`:''].filter(Boolean).join(' · ')}</div>`:''}</div>
+    <div class="sit tap" onclick="openSit()"><div class="row"><span class="sub">Situación actual ›</span><span class="sp"></span><b class="amt" style="font-size:18px">${eur(t.today+fin-debt)}</b></div></div>
     <div class="grid">
       <div class="tile"><span class="sub">Inicio</span><b class="amt">${eur(t.init)}</b></div>
       <div class="tile"><span class="sub">Final previsto</span><b class="amt">${eur(t.forecast)}</b>${debt>0?`<span class="mut">Descontando deuda: ${eur(t.forecast-debt)}</span>`:''}</div>
