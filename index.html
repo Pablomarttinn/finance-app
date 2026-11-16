@@ -232,7 +232,6 @@ function renderNote(){
       <span class="sp"></span><span style="color:var(--ok);font-weight:600">${pct(t.plan,t.meta)} %</span>
     </div>
     <div class="bar"><i style="width:${Math.min(100,pct(t.plan,t.meta))}%"></i></div>
-    ${t.ext?`<div class="mut" style="margin-top:6px">Con ahorro extra: ${eur(t.today)}</div>`:''}
     <div class="sit tap" onclick="openSit()"><div class="row"><span class="sub">Situación actual ›</span><span class="sp"></span><b class="amt" style="font-size:18px">${eur(t.today+fin-debt)}</b></div></div>
     <div class="grid">
       <div class="tile"><span class="sub">Inicio</span><b class="amt">${eur(t.init)}</b></div>
