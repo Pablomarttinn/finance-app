@@ -205,8 +205,8 @@ function renderList(){
 
 function bucketRow(p,k,s){
   return `<div style="padding:12px 0;border-top:1px solid var(--line)">
-    <div class="row"><b style="font-weight:600">${BN[k]}</b><span class="sp"></span><span class="mut" style="margin-right:6px">ahorro del año</span><span class="amt">${eur(s.meta-s.init)}</span></div>
-    <div class="bar s"><i style="width:${Math.min(100,pct(s.plan,s.meta))}%;background:${k==='inv'?'var(--blue)':'var(--ok)'}"></i></div>
+    <div class="row"><b style="font-weight:600">${BN[k]}</b><span class="sp"></span><span class="amt">${eur(s.meta-s.init)}</span></div>
+    <div class="bar s"><i style="width:${Math.min(100,pct(s.saved,s.meta-s.init))}%;background:${k==='inv'?'var(--blue)':'var(--ok)'}"></i></div>
     <div class="row mut" style="margin-top:6px"><span>Inicio ${eur(s.init)}</span><span class="sp"></span><span>Final previsto ${eur(s.forecast)}</span></div>
     <div class="row mut"><span>${quotaLabel(p,k)}</span></div>
   </div>`;
@@ -260,7 +260,8 @@ function renderNote(){
     const pr=b.payments.filter(x=>x.received).length;
     const pill=r>=b.total?`<span class="pill">recibida</span>`:r>0?`<span class="pill">recibido ${eur(r)}</span>`:`<span class="pill w">pendiente</span>`;
     return `<div class="item tap" onclick="openBeca('${b.id}')">
-      <div class="row"><b style="font-weight:600">${esc(b.name)}</b>${pill}<span class="sp"></span><div style="text-align:right"><div class="sub amt">${eur(sp)} / ${eur(b.total)}</div><div class="amt" style="font-size:13px;color:${left<0?'var(--bad)':'var(--txt)'}">${left<0?'Te pasas '+eur(-left):'Disponible '+eur(left)}</div></div></div>
+      <div class="row"><b style="font-weight:600;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(b.name)}</b><span class="sp"></span><span class="sub amt" style="flex:none;white-space:nowrap">${eur(sp)} / ${eur(b.total)}</span></div>
+      <div class="row" style="margin-top:4px">${pill.replace('class="pill','style="margin-left:0" class="pill')}<span class="sp"></span><span class="amt" style="flex:none;white-space:nowrap;font-size:13px;color:${left<0?'var(--bad)':'var(--txt)'}">${left<0?'Te pasas '+eur(-left):'Disponible '+eur(left)}</span></div>
       <div class="row"><div class="bar s" style="flex:1"><i style="width:${Math.min(100,pp)}%;background:${col}"></i></div><span class="mut" style="margin-top:8px;width:38px;text-align:right">${pp} %</span></div>
       ${b.multi?`<div class="mut" style="margin-top:4px">${pr} de ${b.payments.length} pagos recibidos</div>`:''}
     </div>`}).join('')}<button class="add" onclick="openAddBeca()">＋ Nueva financiación</button></div>
